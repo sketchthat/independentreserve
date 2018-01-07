@@ -20,4 +20,4 @@ ir.getBrokerageFees()
   });
 ```
 
-More examples can be found in the `/examples` folder.
+More examples can be found in the [/examples](https://github.com/sketchthat/independentreserve/tree/master/examples) folder.
