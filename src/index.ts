@@ -1,6 +1,5 @@
 import * as crypto from 'crypto';
 import * as rp from 'request-promise';
-import * as utf8 from 'utf8';
 
 import { IAccounts } from './interfaces/accounts.interface';
 import { IBrokerageFees } from './interfaces/brokerageFees.interface';
@@ -63,7 +62,7 @@ export class IndependentReserve {
 
   private generateHmac(uri: string): string {
     this.nonce = new Date().valueOf();
-    const secret = this.keys.privateKey;
+
     const message = [
       uri,
       `apiKey=${this.keys.publicKey}`,
