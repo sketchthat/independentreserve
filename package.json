@@ -1,5 +1,5 @@
 {
-  "name": "independentreserve",
+  "name": "independentreserve-ts",
   "version": "1.0.0",
   "description": "Wrapper client for Independent Reserve, Australian crypto exchange.",
   "main": "dist/index.js",
