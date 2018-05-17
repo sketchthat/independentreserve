@@ -1,4 +1,4 @@
-export interface IOrderBook {
+export interface OrderBook {
   BuyOrders: Order[];
   SellOrders: Order[];
   PrimaryCurrencyCode: string;
