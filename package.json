@@ -1,13 +1,13 @@
 {
   "name": "independentreserve",
   "version": "0.0.0",
-  "description": "Typescript wrapper for Independent Reserve",
+  "description": "Strongly typed node wrapper for Independent Reserve",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {
     "build": "tsc -d",
-    "test": "mocha \"src/**/*.spec.ts\" --require ts-node/register --require source-map-support/register --full-trace --bail",
-    "coverage": "nyc --reporter=lcov --reporter=text-lcov npm test",
+    "test": "mocha \"src/**/*.ts\" --require ts-node/register --require source-map-support/register --full-trace --bail",
+    "coverage": "nyc npm test",
     "coverage-ci": "npm run coverage | coveralls",
     "lint": "tslint --project tsconfig.json"
   },
@@ -16,12 +16,11 @@
     "url": "git+https://github.com/sketchthat/independentreserve.git"
   },
   "keywords": [
-    "coinjar",
+    "independentreserve",
     "exchange",
     "api",
     "bitcoin",
     "ethereum",
-    "ripple",
     "litecoin"
   ],
   "author": "Michael Kimpton",
@@ -49,5 +48,24 @@
     "tslint": "^5.9.1",
     "tslint-eslint-rules": "^5.1.0",
     "typescript": "^2.8.1"
+  },
+  "nyc": {
+    "include": [
+      "src/**/*.ts"
+    ],
+    "exclude": [
+      "src/interfaces/*.ts"
+    ],
+    "extension": [
+      ".ts"
+    ],
+    "reporter": [
+      "text-lcov",
+      "lcov",
+      "html"
+    ],
+    "sourceMap": true,
+    "instrument": true,
+    "check-coverage": true
   }
 }

@@ -1,4 +1,4 @@
-export interface IBrokerageFees {
+export interface BrokerageFee {
   CurrencyCode: string;
   Fee: number;
 }
