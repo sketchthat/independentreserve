@@ -30,7 +30,7 @@ The API wrapper exposes a [Public](https://www.independentreserve.com/API#public
 ```typescript
 import IndependentReserve from 'irwrapper';
 
-const ir = new IndependentReserve('public key', 'private key');
+const ir = new IndependentReserve('public-key', 'private-key');
 
 // Access Public API Methods
 ir.public().GetMarketSummary('xbt', 'aud')
