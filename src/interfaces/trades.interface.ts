@@ -5,7 +5,7 @@ export interface Trades {
   TotalPages: number;
 }
 
-interface Trade {
+export interface Trade {
   TradeGuid: string;
   TradeTimestampUtc: string;
   OrderGuid: string;

@@ -17,7 +17,7 @@
     "object-literal-sort-keys": false,
     "interface-name": [false],
     "array-type": [false],
-    "max-line-length": [true, 140],
+    "max-line-length": [false],
     "no-floating-promises": [true, "RequestPromise", "PromiseLike"],
     "await-promise": [true, "RequestPromise", "PromiseLike"],
     "promise-function-async": true

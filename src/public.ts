@@ -1,8 +1,8 @@
 import Common from './common';
-import { OrderBook } from './interfaces/orderBook.interface';
-import { MarketSummary } from './interfaces/market-summary.interface';
-import { TradeHistorySummary } from './interfaces/trade-history-summary.interface';
 import { FxRates } from './interfaces/fx-rates.interface';
+import { MarketSummary } from './interfaces/market-summary.interface';
+import { OrderBook } from './interfaces/orderBook.interface';
+import { TradeHistorySummary } from './interfaces/trade-history-summary.interface';
 
 class Public {
   private common: Common;

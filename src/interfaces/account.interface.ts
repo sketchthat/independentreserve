@@ -1,4 +1,4 @@
-export interface IAccounts {
+export interface Account {
   AccountGuid: string;
   AccountStatus: string;
   AvailableBalance: number;

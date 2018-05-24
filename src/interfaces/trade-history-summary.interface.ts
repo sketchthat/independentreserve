@@ -6,7 +6,7 @@ export interface TradeHistorySummary {
   SecondaryCurrencyCode: string;
 }
 
-interface HistorySummaryItem {
+export interface HistorySummaryItem {
   AverageSecondaryCurrencyPrice: number;
   ClosingSecondaryCurrencyPrice: number;
   StartTimestampUtc: string;

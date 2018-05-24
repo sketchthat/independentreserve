@@ -1,12 +1,12 @@
 export interface OrderBook {
-  BuyOrders: Order[];
-  SellOrders: Order[];
+  BuyOrders: SingleOrder[];
+  SellOrders: SingleOrder[];
   PrimaryCurrencyCode: string;
   SecondaryCurrencyCode: string;
   CreatedTimestampUtc: string;
 }
 
-interface Order {
+export interface SingleOrder {
   OrderType: string;
   Price: number;
   Volume: number;

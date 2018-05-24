@@ -1,5 +1,5 @@
 {
-  "name": "independentreserve",
+  "name": "irwrapper",
   "version": "0.0.0",
   "description": "Strongly typed node wrapper for Independent Reserve",
   "main": "dist/index.js",

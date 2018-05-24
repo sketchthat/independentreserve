@@ -1,11 +1,11 @@
 export interface RecentTrades {
-  CreatedTimestampUtc : string;
+  CreatedTimestampUtc: string;
   PrimaryCurrencyCode: string;
   SecondaryCurrencyCode: string;
   Trades: Trades[];
 }
 
-interface Trades {
+export interface Trades {
   PrimaryCurrencyAmount: number;
   SecondaryCurrencyTradePrice: number;
   TradeTimestampUtc: string;
