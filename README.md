@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/sketchthat/independentreserve.svg?branch=master)](https://travis-ci.org/sketchthat/independentreserve) [![Coverage Status](https://coveralls.io/repos/github/sketchthat/independentreserve/badge.svg?branch=master)](https://coveralls.io/github/sketchthat/independentreserve?branch=master)
 ![Dependencies](https://david-dm.org/sketchthat/independentreserve.svg)
 
-# CoinJar Exchange Wrapper
+# Independent Reserve Wrapper
 
 Typescript / Node wrapper for the Data and Trading APIs offered by [Independent Reserve](https://www.independentreserve.com)
 
