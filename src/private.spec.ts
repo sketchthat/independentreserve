@@ -222,6 +222,53 @@ describe('Private', () => {
     assert.strictEqual(cryptoStub.callCount, 1);
   });
 
+  it('should call GetClosedOrders', async () => {
+    const cryptoStubChain = {
+      update(update) {
+        assert.strictEqual(update, 'https://api.independentreserve.com/Private/GetClosedOrders,apiKey=pubKey1,nonce=1514725200000,primaryCurrencyCode=xbt,secondaryCurrencyCode=usd,pageIndex=1,pageSize=5');
+
+        return cryptoStubChain;
+      },
+      digest(digest) {
+        assert.strictEqual(digest, 'hex');
+
+        return 'someSecretSignature';
+      },
+    };
+
+    cryptoStub.returns(cryptoStubChain);
+    rpStub.resolves({ response: true });
+
+    const privClass = new Private('pubKey1', 'privKey2');
+
+    const resp: any = await privClass.GetClosedOrders('XBT', 'USD', 1, 5);
+
+    const expectedArgs = [
+      [
+        {
+          uri: 'https://api.independentreserve.com/Private/GetClosedOrders',
+          json: {
+            apiKey: 'pubKey1',
+            nonce: 1514725200000,
+            primaryCurrencyCode: 'xbt',
+            secondaryCurrencyCode: 'usd',
+            pageIndex: 1,
+            pageSize: 5,
+            signature: 'SOMESECRETSIGNATURE',
+          },
+          method: 'post',
+          callback: undefined,
+        },
+      ],
+    ];
+
+    assert.deepEqual(rpStub.args, expectedArgs);
+    assert.strictEqual(rpStub.callCount, 1);
+    assert.deepEqual(resp, { response: true });
+
+    assert.strictEqual(cryptoStub.callCount, 1);
+  });
+
   it('should call GetClosedFilledOrders', async () => {
     const cryptoStubChain = {
       update(update) {
