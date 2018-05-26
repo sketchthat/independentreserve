@@ -80,9 +80,7 @@ class Common {
           value = params[key].join(',');
         }
 
-        if (value) {
-          message.push(`${key}=${value}`);
-        }
+        message.push(`${key}=${value}`);
       });
     }
 
