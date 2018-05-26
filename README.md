@@ -19,7 +19,7 @@ In order to utilise the `private()` method you'll need to generate an [API Key](
 
 ## Usage
 
-The API wrapper exposes a [Public](https://www.independentreserve.com/API#public) and a [Privet](https://www.independentreserve.com/API#private) method, which contain each of the endpoint functions.
+The API wrapper exposes a [Public](https://www.independentreserve.com/API#public) and a [Private](https://www.independentreserve.com/API#private) method, which contain each of the endpoint functions.
 
 ### Exposed Functions
 - [Public](https://github.com/sketchthat/independentreserve/wiki/Public-Methods) methods are within [`public.ts`](https://github.com/sketchthat/independentreserve/blob/master/src/public.ts)
@@ -28,7 +28,7 @@ The API wrapper exposes a [Public](https://www.independentreserve.com/API#public
 ### Example
 
 ```typescript
-import IndependentReserve from 'irwrapper';
+import IndependentReserve from 'independent-reserve';
 
 const ir = new IndependentReserve('public-key', 'private-key');
 
