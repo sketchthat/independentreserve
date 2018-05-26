@@ -69,7 +69,7 @@ describe('Index', () => {
   it('should call private GetAccounts request', async () => {
     const cryptoStubChain = {
       update(update) {
-        assert.match(update, /^https:\/\/api\.independentreserve.com\/Private\/GetAccounts,apiKey=public-key,nonce=([0-9]{13})$/);
+        assert.strictEqual(update, 'https://api.independentreserve.com/Private/GetAccounts,apiKey=public-key,nonce=1514725200000');
 
         return cryptoStubChain;
       },

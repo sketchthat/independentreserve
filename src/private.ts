@@ -17,21 +17,30 @@ class Private {
     this.common = new Common(publicKey, privateKey);
   }
 
-  public async PlaceLimitOrder(primaryCurrencyCode: string, secondaryCurrencyCode: string, orderType: string, price: string, volume: number): Promise<Order> {
+  public async PlaceLimitOrder(
+    primaryCurrencyCode: string,
+    secondaryCurrencyCode: string,
+    price: number,
+    volume: number
+  ): Promise<Order> {
     return this.common.request(true, 'post', 'PlaceLimitOrder', null, {
-      primaryCurrencyCode,
-      secondaryCurrencyCode,
-      orderType,
+      primaryCurrencyCode: primaryCurrencyCode.toLowerCase(),
+      secondaryCurrencyCode: secondaryCurrencyCode.toLowerCase(),
+      orderType: 'LimitBid',
       price,
       volume,
     });
   }
 
-  public async PlaceMarketOrder(primaryCurrencyCode: string, secondaryCurrencyCode: string, orderType: string, volume: number): Promise<Order> {
+  public async PlaceMarketOrder(
+    primaryCurrencyCode: string,
+    secondaryCurrencyCode: string,
+    volume: number
+  ): Promise<Order> {
     return this.common.request(true, 'post', 'PlaceMarketOrder', null, {
-      primaryCurrencyCode,
-      secondaryCurrencyCode,
-      orderType,
+      primaryCurrencyCode: primaryCurrencyCode.toLowerCase(),
+      secondaryCurrencyCode: secondaryCurrencyCode.toLowerCase(),
+      orderType: 'MarketOffer',
       volume,
     });
   }
@@ -42,28 +51,43 @@ class Private {
     });
   }
 
-  public async GetOpenOrders(primaryCurrencyCode: string, secondaryCurrencyCode: string, pageIndex: number, pageSize: number): Promise<Orders> {
+  public async GetOpenOrders(
+    primaryCurrencyCode: string,
+    secondaryCurrencyCode: string,
+    pageIndex: number,
+    pageSize: number
+  ): Promise<Orders> {
     return this.common.request(true, 'post', 'GetOpenOrders', null, {
-      primaryCurrencyCode,
-      secondaryCurrencyCode,
+      primaryCurrencyCode: primaryCurrencyCode.toLowerCase(),
+      secondaryCurrencyCode: secondaryCurrencyCode.toLowerCase(),
       pageIndex,
       pageSize,
     });
   }
 
-  public async GetClosedOrders(primaryCurrencyCode: string, secondaryCurrencyCode: string, pageIndex: number, pageSize: number): Promise<Orders> {
+  public async GetClosedOrders(
+    primaryCurrencyCode: string,
+    secondaryCurrencyCode: string,
+    pageIndex: number,
+    pageSize: number
+  ): Promise<Orders> {
     return this.common.request(true, 'post', 'GetClosedOrders', null, {
-      primaryCurrencyCode,
-      secondaryCurrencyCode,
+      primaryCurrencyCode: primaryCurrencyCode.toLowerCase(),
+      secondaryCurrencyCode: secondaryCurrencyCode.toLowerCase(),
       pageIndex,
       pageSize,
     });
   }
 
-  public async GetClosedFilledOrders(primaryCurrencyCode: string, secondaryCurrencyCode: string, pageIndex: number, pageSize: number): Promise<Orders> {
+  public async GetClosedFilledOrders(
+    primaryCurrencyCode: string,
+    secondaryCurrencyCode: string,
+    pageIndex: number,
+    pageSize: number
+  ): Promise<Orders> {
     return this.common.request(true, 'post', 'GetClosedFilledOrders', null, {
-      primaryCurrencyCode,
-      secondaryCurrencyCode,
+      primaryCurrencyCode: primaryCurrencyCode.toLowerCase(),
+      secondaryCurrencyCode: secondaryCurrencyCode.toLowerCase(),
       pageIndex,
       pageSize,
     });
@@ -79,7 +103,14 @@ class Private {
     return this.common.request(true, 'post', 'GetAccounts');
   }
 
-  public async GetTransactions(accountGuid: string, fromTimestampUtc: string, toTimestampUtc: string, txTypes: string[], pageIndex: number, pageSize: number): Promise<Transactions> {
+  public async GetTransactions(
+    accountGuid: string,
+    fromTimestampUtc: string,
+    toTimestampUtc: string,
+    txTypes: string[],
+    pageIndex: number,
+    pageSize: number
+  ): Promise<Transactions> {
     return this.common.request(true, 'post', 'GetTransactions', null, {
       accountGuid,
       fromTimestampUtc,
@@ -90,46 +121,68 @@ class Private {
     });
   }
 
-  public async GetDigitalCurrencyDepositAddress(primaryCurrencyCode: string): Promise<DepositAddress> {
+  public async GetDigitalCurrencyDepositAddress(
+    primaryCurrencyCode: string
+  ): Promise<DepositAddress> {
     return this.common.request(true, 'post', 'GetDigitalCurrencyDepositAddress', null, {
-      primaryCurrencyCode,
+      primaryCurrencyCode: primaryCurrencyCode.toLowerCase(),
     });
   }
 
-  public async GetDigitalCurrencyDepositAddresses(primaryCurrencyCode: string, pageIndex: number, pageSize: number): Promise<DepositAddresses> {
+  public async GetDigitalCurrencyDepositAddresses(
+    primaryCurrencyCode: string,
+    pageIndex: number,
+    pageSize: number
+  ): Promise<DepositAddresses> {
     return this.common.request(true, 'post', 'GetDigitalCurrencyDepositAddresses', null, {
-      primaryCurrencyCode,
+      primaryCurrencyCode: primaryCurrencyCode.toLowerCase(),
       pageIndex,
       pageSize,
     });
   }
 
-  public async SynchDigitalCurrencyDepositAddressWithBlockchain(depositAddress: string, primaryCurrencyCode: string): Promise<DepositAddress> {
+  public async SynchDigitalCurrencyDepositAddressWithBlockchain(
+    depositAddress: string,
+    primaryCurrencyCode: string
+  ): Promise<DepositAddress> {
     return this.common.request(true, 'post', 'SynchDigitalCurrencyDepositAddressWithBlockchain', null, {
       depositAddress,
-      primaryCurrencyCode,
+      primaryCurrencyCode: primaryCurrencyCode.toLowerCase(),
     });
   }
 
-  public async WithdrawDigitalCurrency(amount: number, withdrawalAddress: string, comment: string, primaryCurrencyCode: string): Promise<null> {
+  public async WithdrawDigitalCurrency(
+    amount: number,
+    withdrawalAddress: string,
+    comment: string,
+    primaryCurrencyCode: string
+  ): Promise<null> {
     return this.common.request(true, 'post', 'WithdrawDigitalCurrency', null, {
       amount,
       withdrawalAddress,
       comment,
-      primaryCurrencyCode,
+      primaryCurrencyCode: primaryCurrencyCode.toLowerCase(),
     });
   }
 
-  public async RequestFiatWithdrawal(secondaryCurrencyCode: string, withdrawalAmount: number, withdrawalBankAccountName: string, comment: string): Promise<FiatWithdrawal> {
+  public async RequestFiatWithdrawal(
+    secondaryCurrencyCode: string,
+    withdrawalAmount: number,
+    withdrawalBankAccountName: string,
+    comment: string
+  ): Promise<FiatWithdrawal> {
     return this.common.request(true, 'post', 'RequestFiatWithdrawal', null, {
-      secondaryCurrencyCode,
+      secondaryCurrencyCode: secondaryCurrencyCode.toLowerCase(),
       withdrawalAmount,
       withdrawalBankAccountName,
       comment,
     });
   }
 
-  public async GetTrades(pageIndex: number, pageSize: number): Promise<Trades> {
+  public async GetTrades(
+    pageIndex: number,
+    pageSize: number
+  ): Promise<Trades> {
     return this.common.request(true, 'post', 'GetTrades', null, {
       pageIndex,
       pageSize,

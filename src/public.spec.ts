@@ -293,5 +293,4 @@ describe('Public', () => {
     assert.strictEqual(rpStub.callCount, 1);
     assert.deepEqual(resp, { response: true });
   });
-
 });
