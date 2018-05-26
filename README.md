@@ -10,7 +10,7 @@ Typescript / Node wrapper for the Data and Trading APIs offered by [Independent 
 Install the dependancies with npm / yarn.
 
 ```
-npm install irwrapper --save
+npm install independent-reserve --save
 ```
 
 ### API Key
