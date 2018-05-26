@@ -22,6 +22,7 @@ class Public {
   public async GetValidLimitOrderTypes(): Promise<string[]> {
     return this.common.request(false, 'get', 'GetValidLimitOrderTypes');
   }
+
   public async GetValidMarketOrderTypes(): Promise<string[]> {
     return this.common.request(false, 'get', 'GetValidMarketOrderTypes');
   }
