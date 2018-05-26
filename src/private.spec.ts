@@ -355,4 +355,418 @@ describe('Private', () => {
 
     assert.strictEqual(cryptoStub.callCount, 1);
   });
+
+  it('should call GetTransactions without toTimestampUTC', async () => {
+    const cryptoStubChain = {
+      update(update) {
+        assert.strictEqual(update, 'https://api.independentreserve.com/Private/GetTransactions,apiKey=pubKey1,nonce=1514725200000,accountGuid=someGuid2,fromTimestampUtc=2014-08-01T08:00:00Z,txTypes=Brokerage,Trade,pageIndex=1,pageSize=20');
+
+        return cryptoStubChain;
+      },
+      digest(digest) {
+        assert.strictEqual(digest, 'hex');
+
+        return 'someSecretSignature';
+      },
+    };
+
+    cryptoStub.returns(cryptoStubChain);
+    rpStub.resolves({ response: true });
+
+    const privClass = new Private('pubKey1', 'privKey2');
+
+    const resp: any = await privClass.GetTransactions('someGuid2', '2014-08-01T08:00:00Z', null, ['Brokerage', 'Trade'], 1, 20);
+
+    const expectedArgs = [
+      [
+        {
+          uri: 'https://api.independentreserve.com/Private/GetTransactions',
+          json: {
+            apiKey: 'pubKey1',
+            nonce: 1514725200000,
+            accountGuid: 'someGuid2',
+            fromTimestampUtc: '2014-08-01T08:00:00Z',
+            txTypes: ['Brokerage', 'Trade'],
+            pageIndex: 1,
+            pageSize: 20,
+            signature: 'SOMESECRETSIGNATURE',
+          },
+          method: 'post',
+          callback: undefined,
+        },
+      ],
+    ];
+
+    assert.deepEqual(rpStub.args, expectedArgs);
+    assert.strictEqual(rpStub.callCount, 1);
+    assert.deepEqual(resp, { response: true });
+
+    assert.strictEqual(cryptoStub.callCount, 1);
+  });
+
+  it('should call GetTransactions with toTimestampUTC', async () => {
+    const cryptoStubChain = {
+      update(update) {
+        assert.strictEqual(update, 'https://api.independentreserve.com/Private/GetTransactions,apiKey=pubKey1,nonce=1514725200000,accountGuid=someGuid2,fromTimestampUtc=2014-08-01T08:00:00Z,toTimestampUtc=2014-09-01T08:00:00Z,txTypes=Brokerage,Trade,pageIndex=1,pageSize=20');
+
+        return cryptoStubChain;
+      },
+      digest(digest) {
+        assert.strictEqual(digest, 'hex');
+
+        return 'someSecretSignature';
+      },
+    };
+
+    cryptoStub.returns(cryptoStubChain);
+    rpStub.resolves({ response: true });
+
+    const privClass = new Private('pubKey1', 'privKey2');
+
+    const resp: any = await privClass.GetTransactions('someGuid2', '2014-08-01T08:00:00Z', '2014-09-01T08:00:00Z', ['Brokerage', 'Trade'], 1, 20);
+
+    const expectedArgs = [
+      [
+        {
+          uri: 'https://api.independentreserve.com/Private/GetTransactions',
+          json: {
+            apiKey: 'pubKey1',
+            nonce: 1514725200000,
+            accountGuid: 'someGuid2',
+            fromTimestampUtc: '2014-08-01T08:00:00Z',
+            toTimestampUtc: '2014-09-01T08:00:00Z',
+            txTypes: ['Brokerage', 'Trade'],
+            pageIndex: 1,
+            pageSize: 20,
+            signature: 'SOMESECRETSIGNATURE',
+          },
+          method: 'post',
+          callback: undefined,
+        },
+      ],
+    ];
+
+    assert.deepEqual(rpStub.args, expectedArgs);
+    assert.strictEqual(rpStub.callCount, 1);
+    assert.deepEqual(resp, { response: true });
+
+    assert.strictEqual(cryptoStub.callCount, 1);
+  });
+
+  it('should call GetDigitalCurrencyDepositAddress', async () => {
+    const cryptoStubChain = {
+      update(update) {
+        assert.strictEqual(update, 'https://api.independentreserve.com/Private/GetDigitalCurrencyDepositAddress,apiKey=pubKey1,nonce=1514725200000,primaryCurrencyCode=xbt');
+
+        return cryptoStubChain;
+      },
+      digest(digest) {
+        assert.strictEqual(digest, 'hex');
+
+        return 'someSecretSignature';
+      },
+    };
+
+    cryptoStub.returns(cryptoStubChain);
+    rpStub.resolves({ response: true });
+
+    const privClass = new Private('pubKey1', 'privKey2');
+
+    const resp: any = await privClass.GetDigitalCurrencyDepositAddress('XBT');
+
+    const expectedArgs = [
+      [
+        {
+          uri: 'https://api.independentreserve.com/Private/GetDigitalCurrencyDepositAddress',
+          json: {
+            apiKey: 'pubKey1',
+            nonce: 1514725200000,
+            signature: 'SOMESECRETSIGNATURE',
+            primaryCurrencyCode: 'xbt',
+          },
+          method: 'post',
+          callback: undefined,
+        },
+      ],
+    ];
+
+    assert.deepEqual(rpStub.args, expectedArgs);
+    assert.strictEqual(rpStub.callCount, 1);
+    assert.deepEqual(resp, { response: true });
+
+    assert.strictEqual(cryptoStub.callCount, 1);
+  });
+
+  it('should call GetDigitalCurrencyDepositAddress', async () => {
+    const cryptoStubChain = {
+      update(update) {
+        assert.strictEqual(update, 'https://api.independentreserve.com/Private/GetDigitalCurrencyDepositAddresses,apiKey=pubKey1,nonce=1514725200000,primaryCurrencyCode=xbt,pageIndex=1,pageSize=5');
+
+        return cryptoStubChain;
+      },
+      digest(digest) {
+        assert.strictEqual(digest, 'hex');
+
+        return 'someSecretSignature';
+      },
+    };
+
+    cryptoStub.returns(cryptoStubChain);
+    rpStub.resolves({ response: true });
+
+    const privClass = new Private('pubKey1', 'privKey2');
+
+    const resp: any = await privClass.GetDigitalCurrencyDepositAddresses('XBT', 1, 5);
+
+    const expectedArgs = [
+      [
+        {
+          uri: 'https://api.independentreserve.com/Private/GetDigitalCurrencyDepositAddresses',
+          json: {
+            apiKey: 'pubKey1',
+            nonce: 1514725200000,
+            signature: 'SOMESECRETSIGNATURE',
+            primaryCurrencyCode: 'xbt',
+            pageIndex: 1,
+            pageSize: 5,
+          },
+          method: 'post',
+          callback: undefined,
+        },
+      ],
+    ];
+
+    assert.deepEqual(rpStub.args, expectedArgs);
+    assert.strictEqual(rpStub.callCount, 1);
+    assert.deepEqual(resp, { response: true });
+
+    assert.strictEqual(cryptoStub.callCount, 1);
+  });
+
+  it('should call SynchDigitalCurrencyDepositAddressWithBlockchain', async () => {
+    const cryptoStubChain = {
+      update(update) {
+        assert.strictEqual(update, 'https://api.independentreserve.com/Private/SynchDigitalCurrencyDepositAddressWithBlockchain,apiKey=pubKey1,nonce=1514725200000,depositAddress=someRandomXbtAddress,primaryCurrencyCode=xbt');
+
+        return cryptoStubChain;
+      },
+      digest(digest) {
+        assert.strictEqual(digest, 'hex');
+
+        return 'someSecretSignature';
+      },
+    };
+
+    cryptoStub.returns(cryptoStubChain);
+    rpStub.resolves({ response: true });
+
+    const privClass = new Private('pubKey1', 'privKey2');
+
+    const resp: any = await privClass.SynchDigitalCurrencyDepositAddressWithBlockchain('someRandomXbtAddress', 'XBT');
+
+    const expectedArgs = [
+      [
+        {
+          uri: 'https://api.independentreserve.com/Private/SynchDigitalCurrencyDepositAddressWithBlockchain',
+          json: {
+            apiKey: 'pubKey1',
+            nonce: 1514725200000,
+            signature: 'SOMESECRETSIGNATURE',
+            primaryCurrencyCode: 'xbt',
+            depositAddress: 'someRandomXbtAddress',
+          },
+          method: 'post',
+          callback: undefined,
+        },
+      ],
+    ];
+
+    assert.deepEqual(rpStub.args, expectedArgs);
+    assert.strictEqual(rpStub.callCount, 1);
+    assert.deepEqual(resp, { response: true });
+
+    assert.strictEqual(cryptoStub.callCount, 1);
+  });
+
+  it('should call SynchDigitalCurrencyDepositAddressWithBlockchain', async () => {
+    const cryptoStubChain = {
+      update(update) {
+        assert.strictEqual(update, 'https://api.independentreserve.com/Private/WithdrawDigitalCurrency,apiKey=pubKey1,nonce=1514725200000,amount=150.55,withdrawalAddress=someRandomXbtAddress,comment=Some Awesome Comment,primaryCurrencyCode=xbt');
+
+        return cryptoStubChain;
+      },
+      digest(digest) {
+        assert.strictEqual(digest, 'hex');
+
+        return 'someSecretSignature';
+      },
+    };
+
+    cryptoStub.returns(cryptoStubChain);
+    rpStub.resolves({ response: true });
+
+    const privClass = new Private('pubKey1', 'privKey2');
+
+    const resp: any = await privClass.WithdrawDigitalCurrency(150.55, 'someRandomXbtAddress', 'Some Awesome Comment', 'XBT');
+
+    const expectedArgs = [
+      [
+        {
+          uri: 'https://api.independentreserve.com/Private/WithdrawDigitalCurrency',
+          json: {
+            apiKey: 'pubKey1',
+            nonce: 1514725200000,
+            signature: 'SOMESECRETSIGNATURE',
+            primaryCurrencyCode: 'xbt',
+            withdrawalAddress: 'someRandomXbtAddress',
+            comment: 'Some Awesome Comment',
+            amount: 150.55,
+          },
+          method: 'post',
+          callback: undefined,
+        },
+      ],
+    ];
+
+    assert.deepEqual(rpStub.args, expectedArgs);
+    assert.strictEqual(rpStub.callCount, 1);
+    assert.deepEqual(resp, { response: true });
+
+    assert.strictEqual(cryptoStub.callCount, 1);
+  });
+
+  it('should call RequestFiatWithdrawal', async () => {
+    const cryptoStubChain = {
+      update(update) {
+        assert.strictEqual(update, 'https://api.independentreserve.com/Private/RequestFiatWithdrawal,apiKey=pubKey1,nonce=1514725200000,secondaryCurrencyCode=aud,withdrawalAmount=233.21,withdrawalBankAccountName=Personal AusBank,comment=Withdraw From IR');
+
+        return cryptoStubChain;
+      },
+      digest(digest) {
+        assert.strictEqual(digest, 'hex');
+
+        return 'someSecretSignature';
+      },
+    };
+
+    cryptoStub.returns(cryptoStubChain);
+    rpStub.resolves({ response: true });
+
+    const privClass = new Private('pubKey1', 'privKey2');
+
+    const resp: any = await privClass.RequestFiatWithdrawal('AUD', 233.21, 'Personal AusBank', 'Withdraw From IR');
+
+    const expectedArgs = [
+      [
+        {
+          uri: 'https://api.independentreserve.com/Private/RequestFiatWithdrawal',
+          json: {
+            apiKey: 'pubKey1',
+            nonce: 1514725200000,
+            signature: 'SOMESECRETSIGNATURE',
+            comment: 'Withdraw From IR',
+            secondaryCurrencyCode: 'aud',
+            withdrawalAmount: 233.21,
+            withdrawalBankAccountName: 'Personal AusBank',
+          },
+          method: 'post',
+          callback: undefined,
+        },
+      ],
+    ];
+
+    assert.deepEqual(rpStub.args, expectedArgs);
+    assert.strictEqual(rpStub.callCount, 1);
+    assert.deepEqual(resp, { response: true });
+
+    assert.strictEqual(cryptoStub.callCount, 1);
+  });
+
+  it('should call GetTrades', async () => {
+    const cryptoStubChain = {
+      update(update) {
+        assert.strictEqual(update, 'https://api.independentreserve.com/Private/GetTrades,apiKey=pubKey1,nonce=1514725200000,pageIndex=1,pageSize=5');
+
+        return cryptoStubChain;
+      },
+      digest(digest) {
+        assert.strictEqual(digest, 'hex');
+
+        return 'someSecretSignature';
+      },
+    };
+
+    cryptoStub.returns(cryptoStubChain);
+    rpStub.resolves({ response: true });
+
+    const privClass = new Private('pubKey1', 'privKey2');
+
+    const resp: any = await privClass.GetTrades(1, 5);
+
+    const expectedArgs = [
+      [
+        {
+          uri: 'https://api.independentreserve.com/Private/GetTrades',
+          json: {
+            apiKey: 'pubKey1',
+            nonce: 1514725200000,
+            signature: 'SOMESECRETSIGNATURE',
+            pageIndex: 1,
+            pageSize: 5,
+          },
+          method: 'post',
+          callback: undefined,
+        },
+      ],
+    ];
+
+    assert.deepEqual(rpStub.args, expectedArgs);
+    assert.strictEqual(rpStub.callCount, 1);
+    assert.deepEqual(resp, { response: true });
+
+    assert.strictEqual(cryptoStub.callCount, 1);
+  });
+
+  it('should call GetBrokerageFees', async () => {
+    const cryptoStubChain = {
+      update(update) {
+        assert.strictEqual(update, 'https://api.independentreserve.com/Private/GetBrokerageFees,apiKey=pubKey1,nonce=1514725200000');
+
+        return cryptoStubChain;
+      },
+      digest(digest) {
+        assert.strictEqual(digest, 'hex');
+
+        return 'someSecretSignature';
+      },
+    };
+
+    cryptoStub.returns(cryptoStubChain);
+    rpStub.resolves({ response: true });
+
+    const privClass = new Private('pubKey1', 'privKey2');
+
+    const resp: any = await privClass.GetBrokerageFees();
+
+    const expectedArgs = [
+      [
+        {
+          uri: 'https://api.independentreserve.com/Private/GetBrokerageFees',
+          json: {
+            apiKey: 'pubKey1',
+            nonce: 1514725200000,
+            signature: 'SOMESECRETSIGNATURE',
+          },
+          method: 'post',
+          callback: undefined,
+        },
+      ],
+    ];
+
+    assert.deepEqual(rpStub.args, expectedArgs);
+    assert.strictEqual(rpStub.callCount, 1);
+    assert.deepEqual(resp, { response: true });
+
+    assert.strictEqual(cryptoStub.callCount, 1);
+  });
 });
