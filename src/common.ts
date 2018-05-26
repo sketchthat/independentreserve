@@ -64,7 +64,7 @@ class Common {
   }
 
   private generateAuthentication(uri: string, params: any): Authentication {
-    const nonce = new Date().valueOf();
+    const nonce = new Date().getTime();
 
     const message = [
       uri,

@@ -9,11 +9,18 @@ import * as crypto from 'crypto';
 import * as rp from 'request-promise';
 
 describe('Index', () => {
-  const currentTime = new Date(2017, 0, 0);
+  let dateStub: SinonStub;
   let rpStub: SinonStub;
   let cryptoStub: SinonStub;
 
   before(() => {
+    dateStub = stub(global, 'Date');
+    dateStub.returns({
+      getTime() {
+        return 1514725200000;
+      },
+    });
+
     rpStub = stub(rp, 'Request');
     cryptoStub = stub(crypto, 'createHmac');
   });
@@ -26,6 +33,7 @@ describe('Index', () => {
   after(() => {
     rpStub.restore();
     cryptoStub.restore();
+    dateStub.restore();
   });
 
   it('should call public GetRecentTrades request', async () => {
@@ -79,23 +87,22 @@ describe('Index', () => {
 
     const resp: any = await ir.private().GetAccounts();
 
-    // const expectedArgs = [
-    //   [
-    //     {
-    //       uri: 'https://api.independentreserve.com/Private/GetAccounts',
-    //       json: true,
-    //       method: 'post',
-    //       callback: undefined,
-    //       json: {
-    //         apiKey: 'public-key',
-    //         nonce: '@TODO',
-    //         signature: 'someSecretSignature'
-    //       }
-    //     },
-    //   ],
-    // ];
+    const expectedArgs = [
+      [
+        {
+          uri: 'https://api.independentreserve.com/Private/GetAccounts',
+          method: 'post',
+          callback: undefined,
+          json: {
+            apiKey: 'public-key',
+            nonce: 1514725200000,
+            signature: 'SOMESECRETSIGNATURE',
+          },
+        },
+      ],
+    ];
 
-    // assert.deepEqual(rpStub.args, expectedArgs);
+    assert.deepEqual(rpStub.args, expectedArgs);
     assert.strictEqual(rpStub.callCount, 1);
     assert.deepEqual(resp, { response: true });
 
