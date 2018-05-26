@@ -193,12 +193,12 @@ describe('Public', () => {
 
     const pubClass = new Public();
 
-    const resp: any = await pubClass.GetMarketSummary('ETH', 'NZD');
+    const resp: any = await pubClass.GetOrderBook('ETH', 'NZD');
 
     const expectedArgs = [
       [
         {
-          uri: 'https://api.independentreserve.com/Public/GetMarketSummary',
+          uri: 'https://api.independentreserve.com/Public/GetOrderBook',
           qs: {
             primaryCurrencyCode: 'eth',
             secondaryCurrencyCode: 'nzd',
