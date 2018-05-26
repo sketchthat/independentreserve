@@ -10,7 +10,7 @@ Typescript / Node wrapper for the Data and Trading APIs offered by [Independent 
 Install the dependancies with npm / yarn.
 
 ```
-npm install independent-reserve --save
+npm install ir-client --save
 ```
 
 ### API Key
@@ -28,7 +28,7 @@ The API wrapper exposes a [Public](https://www.independentreserve.com/API#public
 ### Example
 
 ```typescript
-import IndependentReserve from 'independent-reserve';
+import IndependentReserve from 'ir-client';
 
 const ir = new IndependentReserve('public-key', 'private-key');
 
