@@ -5,7 +5,6 @@ import { SinonStub,  stub } from 'sinon';
 
 import Public from './public';
 
-import * as crypto from 'crypto';
 import * as rp from 'request-promise';
 
 describe('Public', () => {

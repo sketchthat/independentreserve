@@ -1,15 +1,15 @@
-import { BrokerageFee } from './interfaces/brokerage-fees.interface';
-import { Trades } from './interfaces/trades.interface';
-import { FiatWithdrawal } from './interfaces/fiat-withdrawal.interface';
-import { DepositAddresses, DepositAddress } from './interfaces/deposit-address.interface';
-import { Transactions } from './interfaces/transactions-interface';
 import { Account } from './interfaces/account.interface';
-import { Orders, Order } from './interfaces/orders.interface';
+import { BrokerageFee } from './interfaces/brokerage-fees.interface';
+import { DepositAddress, DepositAddresses } from './interfaces/deposit-address.interface';
+import { FiatWithdrawal } from './interfaces/fiat-withdrawal.interface';
+import { Order, Orders } from './interfaces/orders.interface';
+import { Trades } from './interfaces/trades.interface';
+import { Transactions } from './interfaces/transactions-interface';
 declare class Private {
     private common;
     constructor(publicKey?: string, privateKey?: string);
-    PlaceLimitOrder(primaryCurrencyCode: string, secondaryCurrencyCode: string, orderType: string, price: string, volume: number): Promise<Order>;
-    PlaceMarketOrder(primaryCurrencyCode: string, secondaryCurrencyCode: string, orderType: string, volume: number): Promise<Order>;
+    PlaceLimitOrder(primaryCurrencyCode: string, secondaryCurrencyCode: string, price: number, volume: number): Promise<Order>;
+    PlaceMarketOrder(primaryCurrencyCode: string, secondaryCurrencyCode: string, volume: number): Promise<Order>;
     CancelOrder(orderGuid: string): Promise<Order>;
     GetOpenOrders(primaryCurrencyCode: string, secondaryCurrencyCode: string, pageIndex: number, pageSize: number): Promise<Orders>;
     GetClosedOrders(primaryCurrencyCode: string, secondaryCurrencyCode: string, pageIndex: number, pageSize: number): Promise<Orders>;

@@ -1,5 +1,5 @@
-import PublicClass from './public';
 import PrivateClass from './private';
+import PublicClass from './public';
 declare class IndependentReserve {
     private privateClass;
     private publicClass;
