@@ -15,7 +15,7 @@ declare class Private {
     GetClosedOrders(primaryCurrencyCode: string, secondaryCurrencyCode: string, pageIndex: number, pageSize: number): Promise<Orders>;
     GetClosedFilledOrders(primaryCurrencyCode: string, secondaryCurrencyCode: string, pageIndex: number, pageSize: number): Promise<Orders>;
     GetOrderDetails(orderGuid: string): Promise<Order>;
-    GetAccounts(): Promise<Account>;
+    GetAccounts(): Promise<Account[]>;
     GetTransactions(accountGuid: string, fromTimestampUtc: string, toTimestampUtc: string, txTypes: string[], pageIndex: number, pageSize: number): Promise<Transactions>;
     GetDigitalCurrencyDepositAddress(primaryCurrencyCode: string): Promise<DepositAddress>;
     GetDigitalCurrencyDepositAddresses(primaryCurrencyCode: string, pageIndex: number, pageSize: number): Promise<DepositAddresses>;
