@@ -99,7 +99,7 @@ class Private {
     });
   }
 
-  public async GetAccounts(): Promise<Account> {
+  public async GetAccounts(): Promise<Account[]> {
     return this.common.request(true, 'post', 'GetAccounts');
   }
 
