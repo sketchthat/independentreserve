@@ -1,10 +1,9 @@
-import PrivateClass from './private';
-import PublicClass from './public';
-declare class IndependentReserve {
+import { Private } from './private';
+import { Public } from './public';
+export declare class IndependentReserve {
     private privateClass;
     private publicClass;
     constructor(publicKey?: string, privateKey?: string);
-    public(): PublicClass;
-    private(): PrivateClass;
+    public(): Public;
+    private(): Private;
 }
-export default IndependentReserve;

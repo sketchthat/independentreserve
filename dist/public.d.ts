@@ -2,7 +2,7 @@ import { FxRates } from './interfaces/fx-rates.interface';
 import { MarketSummary } from './interfaces/market-summary.interface';
 import { OrderBook } from './interfaces/orderBook.interface';
 import { TradeHistorySummary } from './interfaces/trade-history-summary.interface';
-declare class Public {
+export declare class Public {
     private common;
     constructor();
     GetValidPrimaryCurrencyCodes(): Promise<string[]>;
@@ -17,4 +17,3 @@ declare class Public {
     GetRecentTrades(primaryCurrencyCode: string, secondaryCurrencyCode: string, numberOfRecentTradesToRetrieve: number): Promise<string[]>;
     GetFxRates(): Promise<FxRates[]>;
 }
-export default Public;

@@ -16,7 +16,7 @@ interface Authentication {
   signature: string;
 }
 
-class Common {
+export class Common {
   private uri: string;
   private keys;
 
@@ -96,5 +96,3 @@ class Common {
     };
   }
 }
-
-export default Common;

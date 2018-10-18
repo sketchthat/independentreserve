@@ -5,7 +5,7 @@ import { FiatWithdrawal } from './interfaces/fiat-withdrawal.interface';
 import { Order, Orders } from './interfaces/orders.interface';
 import { Trades } from './interfaces/trades.interface';
 import { Transactions } from './interfaces/transactions-interface';
-declare class Private {
+export declare class Private {
     private common;
     constructor(publicKey?: string, privateKey?: string);
     PlaceLimitOrder(primaryCurrencyCode: string, secondaryCurrencyCode: string, price: number, volume: number): Promise<Order>;
@@ -25,4 +25,3 @@ declare class Private {
     GetTrades(pageIndex: number, pageSize: number): Promise<Trades>;
     GetBrokerageFees(): Promise<BrokerageFee[]>;
 }
-export default Private;
