@@ -3,7 +3,7 @@
 import { assert } from 'chai';
 import { SinonStub,  stub } from 'sinon';
 
-import Public from './public';
+import { Public } from './public';
 
 import * as rp from 'request-promise';
 

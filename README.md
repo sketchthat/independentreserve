@@ -27,8 +27,19 @@ The API wrapper exposes a [Public](https://www.independentreserve.com/API#public
 
 ### Example
 
+Examples for usage of each function can be found within the [examples folder](/examples).
+
+They can be run by the command line with `ts-node`.
+
+```bash
+npm install ts-node -g
+ts-node examples/public/orderBook
+```
+
+A couple of simple examples are listed below.
+
 ```typescript
-import IndependentReserve from 'ir-client';
+import { IndependentReserve } from 'ir-client';
 
 const ir = new IndependentReserve('public-key', 'private-key');
 

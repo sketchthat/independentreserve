@@ -1,10 +1,10 @@
-import Common from './common';
+import { Common } from './common';
 import { FxRates } from './interfaces/fx-rates.interface';
 import { MarketSummary } from './interfaces/market-summary.interface';
 import { OrderBook } from './interfaces/orderBook.interface';
 import { TradeHistorySummary } from './interfaces/trade-history-summary.interface';
 
-class Public {
+export class Public {
   private common: Common;
 
   constructor() {
@@ -76,5 +76,3 @@ class Public {
     return this.common.request(false, 'get', 'GetFxRates');
   }
 }
-
-export default Public;

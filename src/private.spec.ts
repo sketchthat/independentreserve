@@ -3,7 +3,7 @@
 import { assert } from 'chai';
 import { SinonStub,  stub } from 'sinon';
 
-import Private from './private';
+import { Private } from './private';
 
 import * as crypto from 'crypto';
 import * as rp from 'request-promise';

@@ -1,4 +1,4 @@
-import Common from './common';
+import { Common } from './common';
 import { Account } from './interfaces/account.interface';
 import { BrokerageFee } from './interfaces/brokerage-fees.interface';
 import { DepositAddress, DepositAddresses } from './interfaces/deposit-address.interface';
@@ -7,7 +7,7 @@ import { Order, Orders } from './interfaces/orders.interface';
 import { Trades } from './interfaces/trades.interface';
 import { Transactions } from './interfaces/transactions-interface';
 
-class Private {
+export class Private {
   private common: Common;
 
   constructor(
@@ -192,7 +192,4 @@ class Private {
   public async GetBrokerageFees(): Promise<BrokerageFee[]> {
     return this.common.request(true, 'post', 'GetBrokerageFees');
   }
-
 }
-
-export default Private;

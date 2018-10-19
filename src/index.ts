@@ -1,16 +1,16 @@
-import PrivateClass from './private';
-import PublicClass from './public';
+import { Private } from './private';
+import { Public } from './public';
 
-class IndependentReserve {
-  private privateClass: PrivateClass;
-  private publicClass: PublicClass;
+export class IndependentReserve {
+  private privateClass: Private;
+  private publicClass: Public;
 
   constructor(
     publicKey?: string,
     privateKey?: string,
   ) {
-    this.privateClass = new PrivateClass(publicKey, privateKey);
-    this.publicClass = new PublicClass();
+    this.privateClass = new Private(publicKey, privateKey);
+    this.publicClass = new Public();
   }
 
   public public() {
@@ -21,5 +21,3 @@ class IndependentReserve {
     return this.privateClass;
   }
 }
-
-export default IndependentReserve;

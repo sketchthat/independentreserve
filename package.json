@@ -1,6 +1,6 @@
 {
   "name": "ir-client",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "Strongly typed node wrapper for Independent Reserve",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
