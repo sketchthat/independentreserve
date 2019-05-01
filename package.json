@@ -1,6 +1,6 @@
 {
   "name": "ir-client",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Typescript wrapper for Independent Reserve Exchange",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -21,7 +21,13 @@
     "api",
     "bitcoin",
     "ethereum",
-    "litecoin"
+    "litecoin",
+    "playchip",
+    "omisego",
+    "stellar lumens",
+    "bitcoin cash",
+    "0x",
+    "eos"
   ],
   "author": "Michael Kimpton",
   "license": "WTFPL",

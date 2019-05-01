@@ -1,8 +1,12 @@
-language: nodejs
+language: node_js
+node_js:
+  - "lts/*"
 
-before_script:
-  - npm install
-
+before_install:
+  - npm install -g npm@6.4.0
 script:
   - npm run lint
+  - npm run test
+after_success:
+  - npm install coveralls --save-dev
   - npm run coverage-ci
